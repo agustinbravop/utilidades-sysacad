@@ -25,9 +25,9 @@ function storeImage() {
 
 // Se inyectan las dos funciones como event listeners del DOM
 // de la página de configuración de la extensión.
-const imageInput = document.getElementById("image_picker");
+const imageInput = document.getElementById("image_input");
 imageInput.addEventListener("change", storeImage);
 
 document
-  .getElementById("button_clear")
+  .getElementById("clear_button")
   .addEventListener("click", removeImage(imageInput));

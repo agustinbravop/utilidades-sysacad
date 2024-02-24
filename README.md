@@ -12,3 +12,7 @@ El objetivo de Michiutilidades es mejorar la manera en la que la información de
 ## Feedback
 
 Si encontraste algún error no dudes en crear un GitHub Issue para reportarlo. También nos podés dejar sugerencias para mejorar la extensión o agregar funcionalidades nuevas.
+
+## Changelog
+
+- v0.1: Primer prototipo que permite personalizar la imagen de fondo. También calcula los promedios con y sin aplazos en la tabla de exámenes finales.
