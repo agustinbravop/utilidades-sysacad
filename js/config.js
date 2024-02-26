@@ -1,14 +1,14 @@
-/** Retorna un handler que elimina el item 'image_data_url' del storage. */
+/** Retorna un handler que elimina el item 'imageDataUrl' del storage. */
 function removeImage(imageInput) {
   return () => {
-    chrome.storage.local.remove(["image_data_url"]);
+    chrome.storage.local.remove(["imageDataUrl"]);
     imageInput.value = ""; // Limpia el input de la UI.
   };
 }
 
 /**
- * Handler que persiste el item 'image_data_url' en storage.
- * En `background_image.js` hay un listener cuando `image_data_url` cambia.
+ * Handler que persiste el item 'imageDataUrl' en storage.
+ * En `background_image.js` hay un listener cuando `imageDataUrl` cambia.
  */
 function storeImage() {
   if (this.files.length > 0) {
@@ -16,7 +16,7 @@ function storeImage() {
 
     reader.addEventListener("load", () => {
       chrome.storage.local.set({
-        image_data_url: reader.result,
+        imageDataUrl: reader.result,
       });
     });
     reader.readAsDataURL(this.files[0]);

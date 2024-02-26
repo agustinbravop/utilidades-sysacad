@@ -1,5 +1,5 @@
 /** Traduce de la nota textual en la tabla al número correspondiente. */
-const gradesTable = {
+const GRADES_TABLE = {
   uno: 1,
   dos: 2,
   tres: 3,
@@ -7,7 +7,6 @@ const gradesTable = {
   cinco: 5,
   seis: 6,
   siete: 7,
-  ocho: 8,
   ocho: 8,
   nueve: 9,
   diez: 10,
@@ -24,8 +23,8 @@ function getGrades() {
   const finalsTable = document.querySelectorAll("table > tbody > tr");
   let grades = [];
 
-  finalsTable.forEach((v) => {
-    grades.push(gradesTable[v.children[2].textContent]);
+  finalsTable.forEach((rowNode) => {
+    grades.push(GRADES_TABLE[rowNode.children[2].textContent]);
   });
 
   return grades;
@@ -37,7 +36,7 @@ function average(nums) {
 }
 
 /** Genera el promedio sin aplazos de la tabla de exámenes finales. */
-function showAverageWithoutFailures(grades) {
+function generateAverageWithoutFailures(grades) {
   // Se excluyen los aplazos (notas 1-5)
   const avg = average(grades.filter((g) => g >= 6));
 
@@ -47,7 +46,7 @@ function showAverageWithoutFailures(grades) {
 }
 
 /** Genera el promedio con aplazos de la tabla de exámenes finales. */
-function showAverageWithFailures(grades) {
+function generateAverageWithFailures(grades) {
   return `
     <p>😸<b>Promedio con aplazos:</b> ${average(grades).toFixed(2) ?? "-"}</p>
   `;
@@ -59,5 +58,5 @@ const grades = getGrades().filter((g) => g !== undefined);
 // Se inserta el HTML generado al DOM para ser renderizado.
 tableContainer.insertAdjacentHTML(
   "beforeend",
-  showAverageWithoutFailures(grades) + showAverageWithFailures(grades),
+  generateAverageWithoutFailures(grades) + generateAverageWithFailures(grades),
 );
