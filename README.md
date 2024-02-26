@@ -15,5 +15,5 @@ Si encontraste algún error no dudes en crear un GitHub Issue para reportarlo. T
 
 ## Changelog
 
-- v0.1.0: Agregada funcionalidad para personalizar la imagen de fondo. Agregados los promedios con y sin aplazos en la tabla de exámenes finales.
 - v0.2.0: El listado en "Materias del plan" resalta las materias ya aprobadas para dar una idea del progreso en la carrera.
+- v0.1.0: Agregada funcionalidad para personalizar la imagen de fondo. Agregados los promedios con y sin aplazos en la tabla de exámenes finales.
