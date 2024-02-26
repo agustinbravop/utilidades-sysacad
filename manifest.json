@@ -1,7 +1,7 @@
 {
   "name": "Michiutilidades SYSACAD FRRe",
   "description": "Conjunto de utilidades que extienden al SYSACAD de la UTN FRRe para ofrecer más información y comodidades al alumno.",
-  "version": "0.1",
+  "version": "0.2.0",
   "manifest_version": 3,
   "permissions": ["storage"],
   "background": {
@@ -9,18 +9,30 @@
   },
   "action": {
     "default_icon": "icon.png",
-    "default_title": "Establecer Fondo"
+    "default_title": "Configuración"
   },
   "content_scripts": [
+    {
+      "matches": ["https://sysacadweb.frre.utn.edu.ar/*"],
+      "run_at": "document_end",
+      "js": ["js/background_image.js"]
+    },
     {
       "matches": ["https://sysacadweb.frre.utn.edu.ar/Alumnos/Examenes/*"],
       "run_at": "document_idle",
       "js": ["js/finals.js"]
     },
     {
-      "matches": ["https://sysacadweb.frre.utn.edu.ar/*"],
-      "run_at": "document_end",
-      "js": ["js/background_image.js"]
+      "matches": ["https://sysacadweb.frre.utn.edu.ar/Alumnos/estado/*"],
+      "run_at": "document_idle",
+      "js": ["js/state.js"]
+    },
+    {
+      "matches": [
+        "https://sysacadweb.frre.utn.edu.ar/Alumnos/Materias_del_Plan/*"
+      ],
+      "run_at": "document_idle",
+      "js": ["js/plan.js"]
     }
   ]
 }
