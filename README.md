@@ -8,6 +8,7 @@ El objetivo de Michiutilidades es mejorar la manera en la que la información de
 
 - Personalizar la imagen de fondo.
 - Mostrar promedios en el listado de exámenes finales.
+- Resaltar asignaturas aprobadas en el listado de materias del plan.
 
 ## Feedback
 
