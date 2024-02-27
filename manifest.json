@@ -5,7 +5,7 @@
   "manifest_version": 3,
   "permissions": ["storage"],
   "background": {
-    "service_worker": "js/background.js"
+    "service_worker": "js/service_worker.js"
   },
   "action": {
     "default_icon": "icon.png",
@@ -14,7 +14,7 @@
   "content_scripts": [
     {
       "matches": ["https://sysacadweb.frre.utn.edu.ar/*"],
-      "run_at": "document_end",
+      "run_at": "document_start",
       "js": ["js/background_image.js"]
     },
     {
