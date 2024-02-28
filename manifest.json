@@ -18,6 +18,11 @@
       "js": ["js/background_image.js"]
     },
     {
+      "matches": ["https://sysacadweb.frre.utn.edu.ar"],
+      "run_at": "document_idle",
+      "js": ["js/cleanup.js"]
+    },
+    {
       "matches": ["https://sysacadweb.frre.utn.edu.ar/Alumnos/Examenes/*"],
       "run_at": "document_idle",
       "js": ["js/finals.js"]

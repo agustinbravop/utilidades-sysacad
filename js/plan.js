@@ -1,14 +1,14 @@
 /** Retorna un arreglo con solo las materias aprobadas. */
-function getPassedCourses(academicState) {
-  if (!academicState || !Array.isArray(academicState)) {
+function getPassedCourses(courses) {
+  if (!courses || !Array.isArray(courses)) {
     return [];
   }
-  return academicState.filter((course) => course.passed);
+  return courses.filter((course) => course.passed);
 }
 
 /** Agrega un ícono a las materias del plan ya aprobadas. */
-function showProgress(academicState) {
-  const passedCourses = getPassedCourses(academicState);
+function showProgress(courses) {
+  const passedCourses = getPassedCourses(courses);
   const coursesTable = document.querySelectorAll("table > tbody > tr");
 
   coursesTable.forEach((rowNode) => {
@@ -17,12 +17,18 @@ function showProgress(academicState) {
 
     const passed = passedCourses.some((c) => c.name === courseName && c.passed);
     if (passed) {
-      courseTdNode.insertAdjacentText("afterbegin", "✅");
+      courseTdNode.insertAdjacentText("afterbegin", "✅ ");
     }
   });
 }
 
 // Inicialización (corre una sola vez cuando la página carga).
-chrome.storage.local.get("academicState").then((items) => {
-  showProgress(items.academicState);
+/*
+  courses: {
+    name: string,
+    passed: bool
+  }[]
+ */
+chrome.storage.local.get("courses").then((items) => {
+  showProgress(items.courses);
 });

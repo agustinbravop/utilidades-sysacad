@@ -41,14 +41,14 @@ function generateAverageWithoutFailures(grades) {
   const avg = average(grades.filter((g) => g >= 6));
 
   return `
-    <p>😸<b>Promedio sin aplazos:</b> ${avg.toFixed(2) ?? "-"}</p>
+    <p>😸 <b>Promedio sin aplazos:</b> ${avg.toFixed(2) ?? "-"}</p>
   `;
 }
 
 /** Genera el promedio con aplazos de la tabla de exámenes finales. */
 function generateAverageWithFailures(grades) {
   return `
-    <p>😸<b>Promedio con aplazos:</b> ${average(grades).toFixed(2) ?? "-"}</p>
+    <p>😸 <b>Promedio con aplazos:</b> ${average(grades).toFixed(2) ?? "-"}</p>
   `;
 }
 
@@ -58,5 +58,5 @@ const grades = getGrades().filter((g) => g !== undefined);
 // Se inserta el HTML generado al DOM para ser renderizado.
 tableContainer.insertAdjacentHTML(
   "beforeend",
-  generateAverageWithoutFailures(grades) + generateAverageWithFailures(grades),
+  generateAverageWithoutFailures(grades) + generateAverageWithFailures(grades)
 );

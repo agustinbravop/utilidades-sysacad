@@ -17,10 +17,8 @@ function getCourses() {
   return courses;
 }
 
-/**
- * Se persisten materias del estado académico en el item 'academicState' del
- * storage, para que otras vistas del SYSACAD puedan acceder a esos
- * datos. Ej: para medir el progreso en "Materias del plan".
- */
+// Se persisten materias del estado académico en el item 'courses' del
+// storage, para que otras vistas del SYSACAD puedan acceder a esos
+// datos. Ej: para medir el progreso en "Materias del plan".
 const courses = getCourses();
-chrome.storage.local.set({ academicState: courses });
+chrome.storage.local.set({ courses });
