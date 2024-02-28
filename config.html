@@ -17,10 +17,23 @@
       <h2>Configuración</h2>
       <hr />
 
-      <label for="image_input">Imagen de fondo</label>
-      <input type="file" id="image_input" accept="image/*" />
-      <button type="button" id="clear_button">Eliminar</button>
+      <div class="enable-background">
+        <label for="image_input">Imagen de fondo</label>
+        <input type="file" id="image_input" accept="image/*" />
+        <button type="button" id="clear_button">Eliminar</button>
+      </div>
+
+      <div class="enable-feature">
+        <input type="checkbox" name="averages" id="averages" />
+        <label for="averages">Promedios en exámenes finales</label>
+      </div>
+
+      <div class="enable-feature">
+        <input type="checkbox" name="progress" id="progress" />
+        <label for="progress">Progreso en materias del plan</label>
+      </div>
     </div>
+
     <div class="page-generic">
       <h2>Información</h2>
       <hr />
@@ -63,38 +76,59 @@
       background-color: #fff;
     }
 
+    h1 {
+      color: aliceblue;
+      font-size: 2.2rem;
+      text-align: center;
+    }
+
+    h2 {
+      text-align: center;
+      color: #314190;
+      font-weight: 10;
+      font-size: 1.6rem;
+      margin: 0;
+    }
+
+    hr {
+      height: 1px;
+      border: 0;
+      border-top: 1px solid #314190;
+      margin: 1em 0;
+      padding: 0;
+    }
+
     .page-generic {
       background-color: white;
       opacity: 0.8;
       border-radius: 3px;
       padding: 15px;
       margin: 50px auto 0px;
-      width: 66%;
-
-      & h2 {
-        color: #314190;
-        font-weight: 10;
-        font-size: 1.6rem;
-        margin: 0;
-      }
-
-      & hr {
-        height: 1px;
-        border: 0;
-        border-top: 1px solid #314190;
-        margin: 1em 0;
-        padding: 0;
-      }
+      width: 75%;
+      min-width: 250px;
+      max-width: 500px;
     }
 
-    h1 {
-      color: aliceblue;
-      font-size: 2.2rem;
+    .enable-background {
+      display: flex;
+      gap: 25px;
+      margin: 8px 0px;
+    }
+    .enable-background input {
+      max-width: 200px;
     }
 
-    h1,
-    h2 {
-      text-align: center;
+    .enable-feature {
+      display: flex;
+      gap: 5px;
+      margin: 8px 0px;
+    }
+
+    .enable-feature input {
+      width: 1.25em;
+      aspect-ratio: 1;
+      position: relative;
+      bottom: 1.5px;
     }
   </style>
 </html>

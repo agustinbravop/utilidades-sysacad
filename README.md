@@ -16,5 +16,6 @@ Si encontraste algún error no dudes en crear un GitHub Issue para reportarlo. T
 
 ## Changelog
 
+- v0.3.0: La configuración permite habilitar y/o deshabilitar cada funcionalidad por separado. Ahora se limpian los datos persistidos previamente si se intenta iniciar sesión con un legajo distinto al usado por última vez.
 - v0.2.0: El listado en "Materias del plan" resalta las materias ya aprobadas para dar una idea del progreso en la carrera.
 - v0.1.0: Agregada funcionalidad para personalizar la imagen de fondo. Agregados los promedios con y sin aplazos en la tabla de exámenes finales.

@@ -29,6 +29,9 @@ function showProgress(courses) {
     passed: bool
   }[]
  */
-chrome.storage.local.get("courses").then((items) => {
-  showProgress(items.courses);
+chrome.storage.local.get(["courses", "features"]).then((items) => {
+  // Primero se valida si la feature está habilitada.
+  if (items.features.includes("progress")) {
+    showProgress(items.courses);
+  }
 });

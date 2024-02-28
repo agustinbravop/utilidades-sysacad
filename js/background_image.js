@@ -22,7 +22,7 @@ chrome.storage.local.get("imageDataUrl").then((items) => {
       body {
         background-image: url('${items.imageDataUrl || DEFAULT_DATA_URL}');
       }
-    </style>`
+    </style>`,
   );
 });
 

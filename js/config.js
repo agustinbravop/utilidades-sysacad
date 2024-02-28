@@ -31,3 +31,47 @@ imageInput.addEventListener("change", storeImage);
 document
   .getElementById("clear_button")
   .addEventListener("click", removeImage(imageInput));
+
+/** Establece el valor inicial (el que ya tenía) del checkbox. */
+function setInitialCheckboxValue(inputElement) {
+  chrome.storage.local.get("features", (items) => {
+    inputElement.checked = items.features.includes(inputElement.id);
+  });
+}
+
+/**
+ * Handler que persiste si la feature asociada a un checkbox
+ * de la configuración está habilitada o deshabilitada.
+ * El item `features` del storage es un array de strings.
+ */
+function handleFeatureCheckbox() {
+  chrome.storage.local.get("features", (items) => {
+    const features = items.features ?? [];
+
+    if (this.checked) {
+      // Se habilita la funcionalidad agregándola al arreglo.
+      features.push(this.name);
+    } else {
+      // Se deshabilita la funcionalidad quitándola del arreglo.
+      const idx = features.indexOf(this.name);
+      if (idx >= 0) {
+        features.splice(idx, 1);
+      }
+    }
+
+    chrome.storage.local.set({ features });
+  });
+}
+
+/** Suscribe el handler de habilitación de features a su input del DOM correspondiente. */
+function suscribeChangeHandler(feature) {
+  const inputElement = document.getElementById(feature);
+
+  setInitialCheckboxValue(inputElement);
+  inputElement.addEventListener("change", handleFeatureCheckbox);
+}
+
+const features = ["averages", "progress"];
+
+// Se inyectan al DOM los listeners de los checkboxes de features.
+features.forEach(suscribeChangeHandler);

@@ -56,7 +56,13 @@ const tableContainer = document.querySelector("div.table-responsive");
 const grades = getGrades().filter((g) => g !== undefined);
 
 // Se inserta el HTML generado al DOM para ser renderizado.
-tableContainer.insertAdjacentHTML(
-  "beforeend",
-  generateAverageWithoutFailures(grades) + generateAverageWithFailures(grades)
-);
+chrome.storage.local.get(["features"]).then((items) => {
+  // Primero se valida si la funcionalidad está habilitada.
+  if (items.features.includes("averages")) {
+    tableContainer.insertAdjacentHTML(
+      "beforeend",
+      generateAverageWithoutFailures(grades) +
+        generateAverageWithFailures(grades),
+    );
+  }
+});
