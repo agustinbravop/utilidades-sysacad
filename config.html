@@ -26,11 +26,67 @@
       <div class="enable-feature">
         <input type="checkbox" name="averages" id="averages" />
         <label for="averages">Promedios en exámenes finales</label>
+        <div class="tooltip">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15px"
+            height="15px"
+            viewBox="0 0 48 48"
+          >
+            <title>Información</title>
+            <g id="Layer_2" data-name="Layer 2">
+              <g id="invisible_box" data-name="invisible box">
+                <rect width="48" height="48" fill="none" />
+              </g>
+              <g id="icons_Q2" data-name="icons Q2">
+                <path
+                  d="M24,2A22,22,0,1,0,46,24,21.9,21.9,0,0,0,24,2Zm0,40A18,18,0,1,1,42,24,18.1,18.1,0,0,1,24,42Z"
+                />
+                <path
+                  d="M24,20a2,2,0,0,0-2,2V34a2,2,0,0,0,4,0V22A2,2,0,0,0,24,20Z"
+                />
+                <circle cx="24" cy="14" r="2" />
+              </g>
+            </g>
+          </svg>
+          <span
+            >Calcula el promedio con y sin aplazos en base a la nota cargada en
+            cada final.</span
+          >
+        </div>
       </div>
 
       <div class="enable-feature">
         <input type="checkbox" name="progress" id="progress" />
         <label for="progress">Progreso en materias del plan</label>
+        <div class="tooltip">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15px"
+            height="15px"
+            viewBox="0 0 48 48"
+          >
+            <title>Información</title>
+            <g id="Layer_2" data-name="Layer 2">
+              <g id="invisible_box" data-name="invisible box">
+                <rect width="48" height="48" fill="none" />
+              </g>
+              <g id="icons_Q2" data-name="icons Q2">
+                <path
+                  d="M24,2A22,22,0,1,0,46,24,21.9,21.9,0,0,0,24,2Zm0,40A18,18,0,1,1,42,24,18.1,18.1,0,0,1,24,42Z"
+                />
+                <path
+                  d="M24,20a2,2,0,0,0-2,2V34a2,2,0,0,0,4,0V22A2,2,0,0,0,24,20Z"
+                />
+                <circle cx="24" cy="14" r="2" />
+              </g>
+            </g>
+          </svg>
+          <span
+            >Las materias aprobadas se cargan al ir al listado que está en
+            "Estado académico".</span
+          >
+        </div>
       </div>
     </div>
 
@@ -114,6 +170,7 @@
       gap: 25px;
       margin: 8px 0px;
     }
+
     .enable-background input {
       max-width: 200px;
     }
@@ -129,6 +186,47 @@
       aspect-ratio: 1;
       position: relative;
       bottom: 1.5px;
+    }
+
+    .tooltip {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-left: 2px;
+      margin-bottom: 2px;
+      text-align: center;
+    }
+
+    .tooltip:hover span {
+      visibility: visible;
+    }
+
+    .tooltip span {
+      visibility: hidden;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      width: 200px;
+      color: white;
+      background-color: #192733;
+      border-radius: 5px;
+      padding: 10px;
+      top: -85px;
+      left: -90px;
+      z-index: 2;
+    }
+
+    .tooltip span::before {
+      content: "";
+      position: absolute;
+      justify-self: center;
+      padding: 5px;
+      transform: rotate(45deg);
+      background-color: #192733;
+      top: 92%;
+      left: 92.7px;
+      z-index: 1;
     }
   </style>
 </html>
