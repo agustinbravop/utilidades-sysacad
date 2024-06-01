@@ -22,6 +22,12 @@ function showProgress(courses) {
   });
 }
 
+// Tabla del HTML en la que colocar el footnote.
+const tableContainer = document.querySelector("div.table-responsive");
+const htmlProgressFootnote = `
+<p>* Un ✅ indica que la materia está aprobada en el listado de exámenes.</p>
+`;
+
 // Inicialización (corre una sola vez cuando la página carga).
 /*
   courses: {
@@ -33,5 +39,6 @@ chrome.storage.local.get(["courses", "features"]).then((items) => {
   // Primero se valida si la feature está habilitada.
   if (items.features.includes("progress")) {
     showProgress(items.courses);
+    tableContainer.insertAdjacentHTML("beforeend", htmlProgressFootnote);
   }
 });
