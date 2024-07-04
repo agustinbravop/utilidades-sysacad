@@ -3,15 +3,15 @@
 chrome.action.onClicked.addListener(async () => {
   chrome.tabs.create({
     active: true,
-    url: chrome.runtime.getURL("config.html"),
+    url: "config.html",
   });
 });
 
 // Si ya había una configuración de features previa, se la mantiene.
-chrome.runtime.onStartup.addListener(() => {
-  chrome.storage.local.get("features", (items) => {
-    if (!Array.isArray(items.features)) {
-      // No hay un array de features configurado, por defecto se activan todas.
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.local.get("features").then(({ features }) => {
+    if (!Array.isArray(features)) {
+      // No hay un array de features configurado ==> por defecto se activan todas.
       chrome.storage.local.set({ features: ["averages", "progress"] });
     }
   });

@@ -1,9 +1,10 @@
-/**
- * Obtiene un arreglo de las materias del estado académico, representadas
- * como un object con atributos `name: string` y `passed: bool`.
- */
+/** @typedef {{ name: string, passed: bool }} Course */
+
+/** Obtiene un arreglo de las materias del estado académico. */
 function getCourses() {
   const coursesTable = document.querySelectorAll("table > tbody > tr");
+
+  /** @type {Course[]} */
   let courses = [];
 
   coursesTable.forEach((rowNode) => {

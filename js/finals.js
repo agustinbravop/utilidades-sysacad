@@ -1,4 +1,13 @@
-/** Traduce de la nota textual en la tabla del SYSACAD al número correspondiente. */
+/**
+ * `Grade` representa la nota de un exámen final.
+ * Vale `undefined` cuando fue ausente o aprobado sin nota.
+ * @typedef {(number | undefined)} Grade
+ */
+
+/**
+ * Traductor de la nota textual en la tabla del SYSACAD al número correspondiente.
+ * @type { Object.<string, Grade> }
+ */
 const GRADES_TABLE = {
   uno: 1,
   dos: 2,
@@ -21,20 +30,28 @@ const GRADES_TABLE = {
  */
 function getGrades() {
   const finalsTable = document.querySelectorAll("table > tbody > tr");
+
+  /** @type {Grade[]} */
   let grades = [];
 
+  // Por cada fila de la tabla de exámenes finales...
   finalsTable.forEach((rowNode) => {
+    // ...agregar la nota registrada a `grades`.
     grades.push(GRADES_TABLE[rowNode.children[2].textContent]);
   });
 
   return grades;
 }
 
-/** Retorna el promedio de una lista de números. */
+/**
+ * Retorna el promedio de una lista de números.
+ * @param {number} nums
+ */
 function average(nums) {
   return nums.reduce((acum, g) => g + acum, 0) / nums.length;
 }
 
+// Usar solo las notas numéricas (ignorar los exámenes ausentes).
 const grades = getGrades().filter((g) => g !== undefined);
 
 // Promedio sin aplazos.
@@ -52,12 +69,12 @@ const htmlAverageWithFailures = `
 const tableContainer = document.querySelector("div.table-responsive");
 
 // Se inserta el HTML generado al DOM para ser renderizado.
-chrome.storage.local.get(["features"]).then((items) => {
+chrome.storage.local.get(["features"]).then(({ features = [] }) => {
   // Primero se valida si la funcionalidad está habilitada.
-  if (items.features.includes("averages")) {
+  if (features.includes("averages")) {
     tableContainer.insertAdjacentHTML(
       "beforeend",
-      htmlAverageWithoutFailures + htmlAverageWithFailures
+      htmlAverageWithoutFailures + htmlAverageWithFailures,
     );
   }
 });

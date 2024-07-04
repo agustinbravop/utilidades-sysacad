@@ -12,22 +12,22 @@ function setBackgroundImage(dataUrl) {
   }
 }
 
-// Es lo antes posible que se puede inicializar la imagen de fondo en el CSS.
-// Minimiza el tiempo del flash en que el fondo default se muestra, pero parece ser
+// Esto es lo máa antes posible que se puede inicializar la imagen de fondo en el CSS.
+// Esto minimiza la duración del flash en que se ve el fondo por defecto, pero parece ser
 // imposible eliminarlo por completo, dado que el CSS se carga antes que el JavaScript.
-chrome.storage.local.get("imageDataUrl").then((items) => {
+chrome.storage.local.get("imageDataUrl").then(({ imageDataUrl }) => {
   document.documentElement.insertAdjacentHTML(
     "beforeend",
     `<style>
       body {
-        background-image: url('${items.imageDataUrl || DEFAULT_DATA_URL}');
+        background-image: url('${imageDataUrl || DEFAULT_DATA_URL}');
       }
     </style>`,
   );
 });
 
 // Event listener (corre cada vez que cambia el atributo `imageDataUrl`).
-// Actualiza el fondo sin que el usuario tenga que refrescar.
+// Actualiza el fondo sin que el usuario tenga que refrescar la página.
 chrome.storage.onChanged.addListener((changes, areaName) => {
   if (areaName === "local" && changes.imageDataUrl) {
     setBackgroundImage(changes.imageDataUrl.newValue);
