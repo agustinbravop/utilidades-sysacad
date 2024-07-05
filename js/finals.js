@@ -44,25 +44,27 @@ function getGrades() {
 }
 
 /**
- * Retorna el promedio de una lista de números.
+ * Retorna el promedio (como un string) de una lista de números.
  * @param {number} nums
  */
 function average(nums) {
-  return nums.reduce((acum, g) => g + acum, 0) / nums.length;
+  const avg = nums.reduce((acum, g) => g + acum, 0) / nums.length;
+  const text = avg.toFixed(2) ?? "-";
+  const sanitizedText = text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+  return sanitizedText;
 }
 
 // Usar solo las notas numéricas (ignorar los exámenes ausentes).
 const grades = getGrades().filter((g) => g !== undefined);
 
-// Promedio sin aplazos.
-const avgWithoutFailures = average(grades.filter((g) => g >= 6));
-const htmlAverageWithoutFailures = `
-<p>🎯 <b>Promedio sin aplazos:</b> ${avgWithoutFailures.toFixed(2) ?? "-"}</p>
-`;
-
-// Promedio con aplazos.
-const htmlAverageWithFailures = `
-<p>🎯 <b>Promedio con aplazos:</b> ${average(grades).toFixed(2) ?? "-"}</p>
+// HTML con los promedios.
+const htmlFootnote = `
+<p>🎯 <b>Promedio sin aplazos:</b> ${average(grades.filter((g) => g >= 6))}</p>
+<p>🎯 <b>Promedio con aplazos:</b> ${average(grades)}</p>
 `;
 
 // Tabla del HTML en la que colocar los promedios.
@@ -72,9 +74,6 @@ const tableContainer = document.querySelector("div.table-responsive");
 chrome.storage.local.get(["features"]).then(({ features = [] }) => {
   // Primero se valida si la funcionalidad está habilitada.
   if (features.includes("averages")) {
-    tableContainer.insertAdjacentHTML(
-      "beforeend",
-      htmlAverageWithoutFailures + htmlAverageWithFailures,
-    );
+    tableContainer.insertAdjacentHTML("beforeend", htmlFootnote);
   }
 });

@@ -35,9 +35,6 @@ function showProgress(courses) {
 
 // Tabla del HTML en la que colocar el footnote.
 const tableContainer = document.querySelector("div.table-responsive");
-const HTML_PROGRESS_FOOTNOTE = `
-<p>* Un ✅ indica que la materia está aprobada en el estado académico.</p>
-`;
 
 // Inicialización (corre una sola vez cuando la página carga).
 chrome.storage.local
@@ -46,6 +43,9 @@ chrome.storage.local
     // Primero se valida si la feature está habilitada.
     if (features.includes("progress")) {
       showProgress(courses);
-      tableContainer.insertAdjacentHTML("beforeend", HTML_PROGRESS_FOOTNOTE);
+      tableContainer.insertAdjacentHTML(
+        "beforeend",
+        `<p>* Un ✅ indica que la materia está aprobada en el estado académico.</p>`,
+      );
     }
   });

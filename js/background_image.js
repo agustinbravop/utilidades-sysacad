@@ -1,15 +1,21 @@
 const DEFAULT_DATA_URL =
   "https://sysacadweb.frre.utn.edu.ar/static/img/back3.png";
 
+/**
+ * Retorna la URL ingresada por el usuario pseudo sanitizada.
+ * Si no hay una URL, utiliza la URL por defecto del fondo del SYSACAD.
+ */
+function sanitizeDataUrl(dataUrl) {
+  if (dataUrl && typeof dataUrl === "string") {
+    return dataUrl;
+  } else {
+    return DEFAULT_DATA_URL;
+  }
+}
+
 /** Establece la imagen de fondo del SYSACAD. */
 function setBackgroundImage(dataUrl) {
-  if (dataUrl) {
-    // Se establece la imagen personalizada como fondo.
-    document.body.style.backgroundImage = `url('${dataUrl}')`;
-  } else {
-    // No hay fondo personalizado, así que se vuelve al original.
-    document.body.style.backgroundImage = `url('${DEFAULT_DATA_URL}')`;
-  }
+  document.body.style.backgroundImage = `url('${sanitizeDataUrl(dataUrl)}')`;
 }
 
 // Esto es lo máa antes posible que se puede inicializar la imagen de fondo en el CSS.
@@ -20,9 +26,9 @@ chrome.storage.local.get("imageDataUrl").then(({ imageDataUrl }) => {
     "beforeend",
     `<style>
       body {
-        background-image: url('${imageDataUrl || DEFAULT_DATA_URL}');
+        background-image: url('${sanitizeDataUrl(imageDataUrl)}');
       }
-    </style>`,
+    </style>`
   );
 });
 
