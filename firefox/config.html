@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Michiutilidades SYSACAD FRRe</title>
+    <script defer type="application/javascript" src="js/config.js"></script>
+    <script
+      defer
+      type="application/javascript"
+      src="js/background_image.js"
+    ></script>
+  </head>
+
+  <body>
+    <h1>😸 Michiutilidades SYSACAD FRRe 😸</h1>
+
+    <div class="page-generic">
+      <h2>Configuración</h2>
+      <hr />
+
+      <div class="enable-background">
+        <label for="image_input">Imagen de fondo</label>
+        <input type="file" id="image_input" accept="image/*" />
+        <button type="button" id="clear_button">Eliminar</button>
+      </div>
+
+      <div class="enable-feature">
+        <input type="checkbox" name="averages" id="averages" />
+        <label for="averages">Promedios en exámenes finales</label>
+        <div class="tooltip">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15px"
+            height="15px"
+            viewBox="0 0 48 48"
+          >
+            <title>Información</title>
+            <g id="Layer_2" data-name="Layer 2">
+              <g id="invisible_box" data-name="invisible box">
+                <rect width="48" height="48" fill="none" />
+              </g>
+              <g id="icons_Q2" data-name="icons Q2">
+                <path
+                  d="M24,2A22,22,0,1,0,46,24,21.9,21.9,0,0,0,24,2Zm0,40A18,18,0,1,1,42,24,18.1,18.1,0,0,1,24,42Z"
+                />
+                <path
+                  d="M24,20a2,2,0,0,0-2,2V34a2,2,0,0,0,4,0V22A2,2,0,0,0,24,20Z"
+                />
+                <circle cx="24" cy="14" r="2" />
+              </g>
+            </g>
+          </svg>
+          <span
+            >Calcula el promedio con y sin aplazos según las notas en el listado
+            de "Exámenes".</span
+          >
+        </div>
+      </div>
+
+      <div class="enable-feature">
+        <input type="checkbox" name="progress" id="progress" />
+        <label for="progress">Progreso en materias del plan</label>
+        <div class="tooltip">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15px"
+            height="15px"
+            viewBox="0 0 48 48"
+          >
+            <title>Información</title>
+            <g id="Layer_2" data-name="Layer 2">
+              <g id="invisible_box" data-name="invisible box">
+                <rect width="48" height="48" fill="none" />
+              </g>
+              <g id="icons_Q2" data-name="icons Q2">
+                <path
+                  d="M24,2A22,22,0,1,0,46,24,21.9,21.9,0,0,0,24,2Zm0,40A18,18,0,1,1,42,24,18.1,18.1,0,0,1,24,42Z"
+                />
+                <path
+                  d="M24,20a2,2,0,0,0-2,2V34a2,2,0,0,0,4,0V22A2,2,0,0,0,24,20Z"
+                />
+                <circle cx="24" cy="14" r="2" />
+              </g>
+            </g>
+          </svg>
+          <span
+            >Las materias aprobadas se cargan al navegar al listado en "Estado
+            académico".</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="page-generic">
+      <h2>Información</h2>
+      <hr />
+      <p>
+        Esta extensión es de código abierto y el código fuente se puede
+        consultar en su
+        <a href="https://github.com/agustinbravop/utilidades-sysacad"
+          >repositorio</a
+        >. Su uso es gratuito bajo una licencia MIT.
+      </p>
+      <p>
+        Si encontraste algún error lo podés reportar creando un
+        <a href="https://github.com/agustinbravop/utilidades-sysacad/issues"
+          >GitHub Issue</a
+        >. También nos podes dejar sugerencias para mejorar la extensión o
+        agregar funcionalidades nuevas.
+      </p>
+      <p>¡Gracias por usar Michiutilidades!</p>
+    </div>
+  </body>
+
+  <style>
+    /* CSS para imitar el diseño del SYSACAD FRRe oficial. */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-image: url(https://sysacadweb.frre.utn.edu.ar/static/img/back3.png);
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      padding-top: 35px;
+      margin: 0px auto 100px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.42857143;
+      color: #333;
+      background-color: #fff;
+    }
+
+    h1 {
+      color: aliceblue;
+      font-size: 2.2rem;
+      text-align: center;
+    }
+
+    h2 {
+      text-align: center;
+      color: #314190;
+      font-weight: 10;
+      font-size: 1.6rem;
+      margin: 0;
+    }
+
+    hr {
+      height: 1px;
+      border: 0;
+      border-top: 1px solid #314190;
+      margin: 1em 0;
+      padding: 0;
+    }
+
+    .page-generic {
+      background-color: white;
+      opacity: 0.8;
+      border-radius: 3px;
+      padding: 15px;
+      margin: 50px auto 0px;
+      width: 75%;
+      min-width: 250px;
+      max-width: 500px;
+    }
+
+    .enable-background {
+      display: flex;
+      gap: 25px;
+      margin: 8px 0px;
+    }
+
+    .enable-background input {
+      max-width: 200px;
+    }
+
+    .enable-feature {
+      display: flex;
+      gap: 5px;
+      margin: 8px 0px;
+    }
+
+    .enable-feature input {
+      width: 1.25em;
+      aspect-ratio: 1;
+      position: relative;
+      bottom: 1.5px;
+    }
+
+    .tooltip {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-left: 2px;
+      margin-bottom: 2px;
+      text-align: center;
+    }
+
+    .tooltip:hover span {
+      visibility: visible;
+    }
+
+    .tooltip span {
+      visibility: hidden;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      width: 200px;
+      color: white;
+      background-color: #192733;
+      border-radius: 5px;
+      padding: 10px;
+      top: -85px;
+      left: -90px;
+      z-index: 2;
+    }
+
+    .tooltip span::before {
+      content: "";
+      position: absolute;
+      justify-self: center;
+      padding: 5px;
+      transform: rotate(45deg);
+      background-color: #192733;
+      top: 92%;
+      left: 92.7px;
+      z-index: 1;
+    }
+  </style>
+</html>

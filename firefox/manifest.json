@@ -1,0 +1,55 @@
+{
+  "name": "Michiutilidades SYSACAD FRRe",
+  "description": "Conjunto de utilidades que extienden al SYSACAD de la UTN FRRe para ofrecer más información y comodidades al alumno.",
+  "version": "1.0.1",
+  "manifest_version": 2,
+  "permissions": ["storage"],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "utilidades-sysacad@agustinbravop"
+    },
+    "gecko_android": {
+      "id": "utilidades-sysacad@agustinbravop"
+    }
+  },
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "browser_action": {
+    "default_icon": "icons/icon-128.png",
+    "default_title": "Configuración"
+  },
+  "background": {
+    "scripts": ["js/service_worker.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://sysacadweb.frre.utn.edu.ar/*"],
+      "run_at": "document_start",
+      "js": ["js/background_image.js"]
+    },
+    {
+      "matches": ["https://sysacadweb.frre.utn.edu.ar/"],
+      "run_at": "document_idle",
+      "js": ["js/cleanup.js"]
+    },
+    {
+      "matches": ["https://sysacadweb.frre.utn.edu.ar/Alumnos/Examenes/*"],
+      "run_at": "document_idle",
+      "js": ["js/finals.js"]
+    },
+    {
+      "matches": ["https://sysacadweb.frre.utn.edu.ar/Alumnos/estado/*"],
+      "run_at": "document_idle",
+      "js": ["js/academic_state.js"]
+    },
+    {
+      "matches": [
+        "https://sysacadweb.frre.utn.edu.ar/Alumnos/Materias_del_Plan/*"
+      ],
+      "run_at": "document_idle",
+      "js": ["js/plan.js"]
+    }
+  ]
+}

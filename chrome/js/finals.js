@@ -45,7 +45,7 @@ function getGrades() {
 
 /**
  * Retorna el promedio (como un string) de una lista de números.
- * @param {number} nums
+ * @param {number[]} nums
  */
 function average(nums) {
   const avg = nums.reduce((acum, g) => g + acum, 0) / nums.length;
