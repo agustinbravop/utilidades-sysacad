@@ -16,6 +16,7 @@ Si encontraste algún error no dudes en crear un GitHub Issue para reportarlo. T
 
 ## Changelog
 
+- v1.0.2: La extensión de Firefox es self-publish.
 - v1.0.1: Corregido mensaje informativo en "Materias del plan". Extensión ahora disponible en Firefox.
 - v1.0.0: Estabilidad de funcionalidades alcanzada. Emojis modificados.
 - v0.3.0: La configuración permite habilitar y/o deshabilitar cada funcionalidad por separado. Ahora se limpian los datos persistidos previamente si se intenta iniciar sesión con un legajo distinto al usado por última vez.

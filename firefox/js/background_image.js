@@ -28,7 +28,7 @@ browser.storage.local.get("imageDataUrl").then(({ imageDataUrl }) => {
       body {
         background-image: url('${sanitizeDataUrl(imageDataUrl)}');
       }
-    </style>`
+    </style>`,
   );
 });
 

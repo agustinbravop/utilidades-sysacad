@@ -6,10 +6,12 @@
   "permissions": ["storage"],
   "browser_specific_settings": {
     "gecko": {
-      "id": "utilidades-sysacad@agustinbravop"
+      "id": "utilidades-sysacad@agustinbravop",
+      "update_url": "https://raw.githubusercontent.com/agustinbravop/utilidades-sysacad/main/firefox/update-manifest.json"
     },
     "gecko_android": {
-      "id": "utilidades-sysacad@agustinbravop"
+      "id": "utilidades-sysacad@agustinbravop",
+      "update_url": "https://raw.githubusercontent.com/agustinbravop/utilidades-sysacad/main/firefox/update-manifest.json"
     }
   },
   "icons": {
